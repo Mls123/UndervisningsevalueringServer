@@ -45,7 +45,7 @@ public class StudentEndpoint extends UserEndpoint {
         ReviewDTO review = gson.fromJson(data, ReviewDTO.class);
         StudentController studentCtrl = new StudentController();
 
-        boolean isDeleted = studentCtrl.softDeleteReview(review.getUserId(), review.getId());
+        boolean isDeleted = studentCtrl.softDeleteReviewMetode2(review.getUserId(), review.getId());
 
         if (isDeleted) {
             String toJson = gson.toJson(Digester.encrypt(gson.toJson(isDeleted)));

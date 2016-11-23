@@ -15,10 +15,14 @@ import java.util.Map;
 
 public class UserController {
 
+    public UserController() {
+    }
+
     public UserDTO login(String cbs_email, String password) {
 
         UserDTO user = new UserDTO();
-        String securePW = Digester.hashWithSalt(password);
+        Digester digester = new Digester();
+        String securePW = digester.hashWithSalt(password);
 
         try {
             Map<String, String> params = new HashMap();
@@ -40,7 +44,7 @@ public class UserController {
             e.printStackTrace();
         }
 
-        System.out.println("User not found ");
+        System.out.print("User not found");
         return null;
     }
 
@@ -127,15 +131,36 @@ public class UserController {
         }
         catch (SQLException e){
             e.printStackTrace();
-        Logging.log(e,2,"Kunne ikke hente getLecture");
+            Logging.log(e,2,"Kunne ikke hente getLecture");
 
         }
         return lectures;
     }
+    
+    public boolean softDeleteReviewMetode2(int userId, int reviewId) {
+        boolean isSoftDeleted = true;
 
+        try {
+            Map<String, String> isDeleted = new HashMap();
+
+            isDeleted.put("is_deleted", "1");
+
+            Map<String, String> whereParams = new HashMap();
+            whereParams.put("user_id", String.valueOf(userId));
+            whereParams.put("id", String.valueOf(reviewId));
+
+            DBWrapper.updateRecords("review", isDeleted, whereParams);
+            return isSoftDeleted;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            isSoftDeleted = false;
+        }
+        return isSoftDeleted;
+    }
 
     //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
-    public boolean softDeleteReview(int userId, int reviewId) {
+    public boolean softDeleteReviewMetode1(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 
         try {
@@ -161,6 +186,7 @@ public class UserController {
         }
         return isSoftDeleted;
     }
+
 
     public ArrayList<CourseDTO> getCourses(int userId) {
 
