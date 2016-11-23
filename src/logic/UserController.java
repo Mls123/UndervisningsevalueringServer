@@ -136,7 +136,7 @@ public class UserController {
         }
         return lectures;
     }
-    
+
     public boolean softDeleteReviewMetode2(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 

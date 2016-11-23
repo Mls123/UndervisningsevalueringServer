@@ -81,7 +81,7 @@ public class AdminController extends UserController {
                  */
 
                 UserController u = new UserController();
-                u.softDeleteReview(0,idReviewChoice);
+                u.softDeleteReviewMetode2(0,idReviewChoice);
 
                 TUIAdminMenu tuiAdminMenu = new TUIAdminMenu();
                 tuiAdminMenu.menu(adminDTO);
