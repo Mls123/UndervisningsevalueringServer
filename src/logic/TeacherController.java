@@ -17,12 +17,6 @@ import java.util.Map;
  */
 public class TeacherController extends UserController {
 
-    public static void main(String[] args) {
-        TeacherController ctr = new TeacherController();
-        System.out.println(ctr.calculateAverageRatingOnCourse("BALJO1001U_LA_E16"));
-    }
-
-
     private TeacherDTO currentTeacher;
 
     public TeacherController() {
@@ -48,7 +42,7 @@ public class TeacherController extends UserController {
      * @param courseId id'et på det kursus man ønsker samlet antal deltagere for.
      * @return det samlede antal der er tilmeldt kurset.
      */
-    //TODO ...fuck... returnerer denne her også læreren selv som en del af samlet antal tilmeldte?
+
     public int getCourseParticipants(int courseId) {
 
         //Forbered MySQL statement
