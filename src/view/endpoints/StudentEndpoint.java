@@ -42,7 +42,6 @@ public class StudentEndpoint extends UserEndpoint {
     public Response deleteReview(@PathParam("reviewId") int reviewId) {
         Gson gson = new Gson();
 
-        //ReviewDTO review = gson.fromJson(data, ReviewDTO.class);
         StudentController studentCtrl = new StudentController();
 
         boolean isDeleted = studentCtrl.softDeleteReview(reviewId);
