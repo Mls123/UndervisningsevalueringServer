@@ -51,7 +51,7 @@ public class StudentController extends UserController {
         return isAdded;
     }
 
-    public boolean softDeleteReview(int userId, int id) {
+    public boolean softDeleteReview(int reviewId) {
         boolean isSoftDeleted = true;
 
         try {
@@ -60,8 +60,7 @@ public class StudentController extends UserController {
             isDeleted.put("is_deleted", "1");
 
             Map<String, String> params = new HashMap();
-            params.put("id", String.valueOf(id));
-            params.put("user_id", String.valueOf(userId));
+            params.put("id", String.valueOf(reviewId));
 
             DBWrapper.updateRecords("review", isDeleted, params);
             return isSoftDeleted;

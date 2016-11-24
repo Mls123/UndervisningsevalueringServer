@@ -137,7 +137,9 @@ public class UserController {
         return lectures;
     }
 
-    public boolean softDeleteReviewMetode2(int userId, int reviewId) {
+
+    //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
+    public boolean softDeleteReview(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 
         try {
@@ -160,7 +162,7 @@ public class UserController {
     }
 
     //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
-    public boolean softDeleteReviewMetode1(int userId, int reviewId) {
+    public boolean softDeleteReviewMetode2(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 
         try {
@@ -242,5 +244,4 @@ public class UserController {
         }
         return studies;
     }
-
 }
