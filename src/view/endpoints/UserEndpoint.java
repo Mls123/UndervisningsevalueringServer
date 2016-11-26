@@ -9,7 +9,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
-
 @Path("/api")
 public class UserEndpoint {
 
@@ -24,8 +23,11 @@ public class UserEndpoint {
     @Path("/lecture/{code}")
     public Response getLectures(@PathParam("code") String code) {
         Gson gson = new Gson();
+
+        String decrypt = Digester.decrypt(code);
+
         UserController userCtrl = new UserController();
-        ArrayList<LectureDTO> lectures = userCtrl.getLectures(code);
+        ArrayList<LectureDTO> lectures = userCtrl.getLectures(decrypt);
 
         if (!lectures.isEmpty()) {
             return successResponse(200, lectures);
@@ -43,11 +45,15 @@ public class UserEndpoint {
     @GET
     @Consumes("applications/json")
     @Path("/course/{userId}")
-    public Response getCourses(@PathParam("userId") int userId) {
+    public Response getCourses(@PathParam("userId") String userId) {
 
         Gson gson = new Gson();
         UserController userCtrl = new UserController();
-        ArrayList<CourseDTO> courses = userCtrl.getCourses(userId);
+
+        String userIdDecrypt = Digester.decrypt(userId);
+        int userIdDecrypt2 = Integer.valueOf(userIdDecrypt);
+
+        ArrayList<CourseDTO> courses = userCtrl.getCourses(userIdDecrypt2);
 
         if (!courses.isEmpty()) {
             return successResponse(200, courses);
@@ -59,10 +65,14 @@ public class UserEndpoint {
     @GET
     @Consumes("applications/json")
     @Path("/reviews/{userId}")
-    public Response getReviewsWithUserId(@PathParam("userId") int userId) {
+    public Response getReviewsWithUserId(@PathParam("userId") String userId) {
         Gson gson = new Gson();
+
+        String userIdDecrypt = Digester.decrypt(userId);
+        int userIdDecrypt2 = Integer.valueOf(userIdDecrypt);
+
         UserController userCtrl = new UserController();
-        ArrayList<ReviewDTO> reviews = userCtrl.getReviewsWithUserId(userId);
+        ArrayList<ReviewDTO> reviews = userCtrl.getReviewsWithUserId(userIdDecrypt2);
 
             if (!reviews.isEmpty()) {
                 return successResponse(200, reviews);
@@ -74,10 +84,14 @@ public class UserEndpoint {
     @GET
     @Consumes("applications/json")
     @Path("/review/{lectureId}")
-    public Response getReviewsWithLectureId(@PathParam("lectureId") int lectureId) {
+    public Response getReviewsWithLectureId(@PathParam("lectureId") String lectureId) {
         Gson gson = new Gson();
+
+        String decrypt = Digester.decrypt(lectureId);
+        int toInt = Integer.valueOf(decrypt);
+
         UserController userCtrl = new UserController();
-        ArrayList<ReviewDTO> reviews = userCtrl.getReviewsWithLectureId(lectureId);
+        ArrayList<ReviewDTO> reviews = userCtrl.getReviewsWithLectureId(toInt);
 
         if (!reviews.isEmpty()) {
             return successResponse(200, reviews);
@@ -91,8 +105,11 @@ public class UserEndpoint {
     public Response getStudy(@PathParam("shortname") String shortname) {
 
         Gson gson = new Gson();
+
+        String shortNameDecrypt = Digester.decrypt(shortname);
+
         UserController userCtrl = new UserController();
-        ArrayList<StudyDTO> studies = userCtrl.getStudies(shortname);
+        ArrayList<StudyDTO> studies = userCtrl.getStudies(shortNameDecrypt);
 
         if (!studies.isEmpty()) {
             return successResponse(200, studies);
@@ -107,7 +124,7 @@ public class UserEndpoint {
     public Response login(String data) {
 
         Gson gson = new Gson();
-        UserDTO user = new Gson().fromJson(data, UserDTO.class);
+        UserDTO user = new Gson().fromJson(Digester.decrypt(data), UserDTO.class);
         UserController userCtrl = new UserController();
 
         if (user != null) {
@@ -128,9 +145,9 @@ public class UserEndpoint {
         Gson gson = new Gson();
 
         //Denne er til og aktivere kryptering
-        //return Response.status(status).entity(gson.toJson(Digester.encrypt(gson.toJson(data)))).build();
+        return Response.status(status).entity((Digester.encrypt(gson.toJson(data)))).build();
 
         //Denne er til og få Json udskrevet i browseren
-        return Response.status(status).entity(gson.toJson(data)).build();
+        //return Response.status(status).entity(gson.toJson(data)).build();
     }
 }

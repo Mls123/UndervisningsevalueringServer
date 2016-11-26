@@ -28,14 +28,22 @@ public class TeacherController extends UserController {
     }
 
 
-    /*
-        Skal vise gennemsnitlig deltagelse for en lecture, udregnet som antal reviews/antal tilmeldte på kurset.
+    public double calculateAverageRatingOnLecture(int lectureId) {
+        //DecimalFormat df = new DecimalFormat("#.00");
 
-        Find courseID ud fra lectureID
-        Query courseattendant og find samtlige instanser af det courseID
-        Udregn gennemsnit
+        getReviewsWithLectureId(lectureId);
 
-     */
+        int numberOfReviews = getReviewsWithLectureId(lectureId).size();
+        int sumOfRatings = 0;
+
+        for (ReviewDTO review : getReviewsWithLectureId(lectureId)) {
+            sumOfRatings = sumOfRatings + review.getRating();
+        }
+
+        double average = sumOfRatings / numberOfReviews;
+
+        return average;
+    }
 
     /**
      * Gennemsøger tabellen course_attendant for brugere med et bestemt course_id.
@@ -43,14 +51,14 @@ public class TeacherController extends UserController {
      * @return det samlede antal der er tilmeldt kurset.
      */
 
-    public int getCourseParticipants(int courseId) {
+    public int getCourseParticipants(int courseId, int courseAttendants) {
 
         //Forbered MySQL statement
         String table = "course_attendant";
         Map<String, String> whereStmt = new HashMap<String, String>();
         whereStmt.put("course_id", String.valueOf(courseId));
         CachedRowSet rs = null;
-        int courseAttendants = 0;
+        courseAttendants = 0;
 
         //Query courseattendant og find samtlige instanser af det courseID
         try {
@@ -95,8 +103,8 @@ public class TeacherController extends UserController {
             rs.next();
             int courseId = rs.getInt("id");
 
-
-            int courseAttendants = getCourseParticipants(courseId);
+            int courseAttendant = 0;
+            int courseAttendants = getCourseParticipants(courseId, courseAttendant);
 
 
             //Find mængde af reviews for den givne lektion
@@ -119,41 +127,35 @@ public class TeacherController extends UserController {
     }
 
     /**
-     * Udregner en lektions gennemsnitige rating ud fra rating givet i dets reviews.
-     * @param lectureId ID'et på lektionen.
-     * @return Returnerer den gennemsnitlige rating for lektionen som en Integer.
-     */
-    public double calculateLectureAverage(int lectureId) {
-        ArrayList<ReviewDTO> reviews = getReviewsWithLectureId(lectureId);
-        int total = 0;
-
-        for (ReviewDTO review : reviews) {
-            total += review.getRating();
-        }
-
-        double average = (double) total / (double)reviews.size();
-        return average;
-    }
-
-
-    /**
      * Udregner den gennemsnitlige rating for et givent kursus ud fra dets lektioner.
      * @param courseId ID'et på kurset
      * @return Returnerer den gennemsnitlige rating for kurset som en Integer.
      */
-    public int calculateAverageRatingOnCourse(String courseId) {
-        ArrayList<LectureDTO> lecturesInCourse = getLectures(courseId);
-        int total = 0;
+        public double calculateAverageRatingOnCourse(String courseId, double average) {
 
-        for (LectureDTO lecture : lecturesInCourse){
-            total += calculateLectureAverage(lecture.getId());
+            int lectureId = 0;
+            double sumOfRatings = 0;
+            double numberOfReviews = 0;
+
+            // for (LectureDTO lecture : getLectures1(courseId)) {
+            for (LectureDTO lecture : getLectures(courseId)) {
+                lectureId = lecture.getId();
+            }
+
+            //for (ReviewDTO review : getReviews1(lectureId)) {
+            for (ReviewDTO review : getReviewsWithLectureId(lectureId)) {
+                sumOfRatings = sumOfRatings + review.getRating();
+            }
+
+            //numberOfReviews = getReviews1(lectureId).size();
+            numberOfReviews = getReviewsWithLectureId(lectureId).size();
+
+            average = sumOfRatings / numberOfReviews;
+            System.out.println(average);
+
+            return average;
         }
 
-        int average = total / lecturesInCourse.size();
-
-        return average;
-
-    }
 
     public boolean softDeleteReview(int reviewId) {
         boolean isSoftDeleted = true;

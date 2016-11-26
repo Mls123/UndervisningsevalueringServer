@@ -22,7 +22,7 @@ public class Run {
             server = HttpServerFactory.create("http://" + ConfigLoader.SERVER_ADDRESS + ":" + ConfigLoader.SERVER_PORT + "/");
             System.setOut(stdout);
         }catch(ArrayIndexOutOfBoundsException a){
-            Logging.log(a, 3, "Fejl. Sysem startede iskke!");
+            Logging.log(a, 3, "Fejl. Sysem startede ikke!");
             System.exit(20);
         }
 

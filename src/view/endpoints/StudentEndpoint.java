@@ -21,13 +21,12 @@ public class StudentEndpoint extends UserEndpoint {
     public Response addReview(String json) {
 
         Gson gson = new Gson();
-        ReviewDTO review = new Gson().fromJson(json, ReviewDTO.class);
+        ReviewDTO review = new Gson().fromJson(Digester.decrypt(json), ReviewDTO.class);
 
         StudentController studentCtrl = new StudentController();
         boolean isAdded = studentCtrl.addReview(review);
 
         if (isAdded) {
-            //String toJson = gson.toJson(Digester.encrypt(gson.toJson(isAdded)));
             String toJson = gson.toJson(gson.toJson(isAdded));
             return successResponse(200, toJson);
 
@@ -39,12 +38,15 @@ public class StudentEndpoint extends UserEndpoint {
     @DELETE
     @Consumes("application/json")
     @Path("/review/{reviewId}")
-    public Response deleteReview(@PathParam("reviewId") int reviewId) {
+    public Response deleteReview(@PathParam("reviewId") String reviewId) {
         Gson gson = new Gson();
 
         StudentController studentCtrl = new StudentController();
 
-        boolean isDeleted = studentCtrl.softDeleteReview(reviewId);
+        String reviewIdDecrypt = Digester.decrypt(reviewId);
+        int review = Integer.valueOf(reviewIdDecrypt);
+
+        boolean isDeleted = studentCtrl.softDeleteReview(review);
 
         if (isDeleted) {
             String toJson = gson.toJson(Digester.encrypt(gson.toJson(isDeleted)));
