@@ -28,7 +28,7 @@ public class TeacherController extends UserController {
     }
 
 
-    public double calculateAverageRatingOnLecture(int lectureId) {
+    public double calculateAverageRatingOnLecture(int lectureId, double average) {
         //DecimalFormat df = new DecimalFormat("#.00");
 
         getReviewsWithLectureId(lectureId);
@@ -40,7 +40,7 @@ public class TeacherController extends UserController {
             sumOfRatings = sumOfRatings + review.getRating();
         }
 
-        double average = sumOfRatings / numberOfReviews;
+        average = sumOfRatings / numberOfReviews;
 
         return average;
     }
@@ -78,13 +78,13 @@ public class TeacherController extends UserController {
      * @param lectureId ID'et på lektionen.
      * @return Mængden af studerende som har deltaget i evalueringen, udregnet som en procentsats.
      */
-    public double calculateReviewParticipation(int lectureId) {
+    public double calculateReviewParticipation(int lectureId, double reviewParticipation) {
 
         String table = "lecture";
         String[] attributes = new String[]{"course_id"};
         Map<String, String> whereStmt = new HashMap<String, String>();
         whereStmt.put("id", String.valueOf(lectureId));
-        double reviewParticipation = 0;
+        reviewParticipation = 0;
 
         try {
             //Find courseID ud fra lectureID

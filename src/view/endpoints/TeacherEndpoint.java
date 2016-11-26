@@ -37,11 +37,12 @@ public class TeacherEndpoint extends UserEndpoint {
     @GET
     @Consumes("applications/json")
     @Path("/courseParticipation/{courseId}")
-    public Response getCourseParticipation(@PathParam("courseId") int courseId) {
+    public Response getCourseParticipation(@PathParam("courseId") String courseId) {
+
         Gson gson = new Gson();
         TeacherController teacherController = new TeacherController();
 
-        String courseIdDecrypt = Digester.decrypt(String.valueOf(courseId));
+        String courseIdDecrypt = Digester.decrypt(courseId);
 
         int courseAttendants = 0;
         int courseIdDecrypt2 = Integer.valueOf(courseIdDecrypt);
@@ -49,6 +50,64 @@ public class TeacherEndpoint extends UserEndpoint {
 
         if (courseAttendants != 0) {
             return successResponse(200, courseAttendants);
+        } else {
+            return errorResponse(404, "Failed. Couldn't get lectures.");
+        }
+    }
+    @GET
+    @Consumes("applications/json")
+    @Path("/averageLectureRating/{lectureId}")
+    public Response getCalculateAverageRatingOnLecture(@PathParam("lectureId") String lectureId) {
+
+        Gson gson = new Gson();
+        TeacherController teacherController = new TeacherController();
+
+        String decrypt = Digester.decrypt(lectureId);
+        int toInt = Integer.valueOf(decrypt);
+
+        double average = 0;
+        teacherController.calculateAverageRatingOnLecture(toInt, average);
+
+        if (average != 0) {
+            return successResponse(200, average);
+        } else {
+            return errorResponse(404, "Failed. Couldn't get lectures.");
+        }
+    }
+    @GET
+    @Consumes("applications/json")
+    @Path("/reviewParticipation/{lectureId}")
+    public Response getCalculateReviewParticipation(@PathParam("lectureId") String lectureId) {
+
+        Gson gson = new Gson();
+        TeacherController teacherController = new TeacherController();
+
+        String decrypt = Digester.decrypt(lectureId);
+        int toInt = Integer.valueOf(decrypt);
+
+        double reviewParticipation = 0;
+        teacherController.calculateReviewParticipation(toInt, reviewParticipation);
+
+        if (reviewParticipation != 0) {
+            return successResponse(200, reviewParticipation);
+        } else {
+            return errorResponse(404, "Failed. Couldn't get lectures.");
+        }
+    }
+    @GET
+    @Consumes("applications/json")
+    @Path("/averageCourseRating/{courseId}")
+    public Response getCalculateAverageRatingOnCourse(@PathParam("courseId") String courseId) {
+
+        Gson gson = new Gson();
+        TeacherController teacherController = new TeacherController();
+        String decrypt = Digester.decrypt(courseId);
+
+        int average = 0;
+        teacherController.calculateAverageRatingOnCourse(decrypt, average);
+
+        if (average != 0) {
+            return successResponse(200, average);
         } else {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
