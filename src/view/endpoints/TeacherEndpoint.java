@@ -107,7 +107,8 @@ public class TeacherEndpoint extends UserEndpoint {
         teacherController.calculateAverageRatingOnCourse(decrypt, average);
 
         if (average != 0) {
-            return successResponse(200, average);
+            String returnAverage = String.valueOf(average);
+            return successResponse(200, returnAverage);
         } else {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
