@@ -103,7 +103,7 @@ public class TeacherEndpoint extends UserEndpoint {
         TeacherController teacherController = new TeacherController();
         String decrypt = Digester.decrypt(courseId);
 
-        int average = 0;
+        double average = 0;
         teacherController.calculateAverageRatingOnCourse(decrypt, average);
 
         if (average != 0) {

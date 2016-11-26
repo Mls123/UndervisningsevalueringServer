@@ -151,7 +151,6 @@ public class TeacherController extends UserController {
             numberOfReviews = getReviewsWithLectureId(lectureId).size();
 
             average = sumOfRatings / numberOfReviews;
-            System.out.println(average);
 
             return average;
         }

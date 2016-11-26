@@ -3,6 +3,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.*;
 import logic.ConfigLoader;
+import logic.TeacherController;
 import shared.AdminDTO;
 import shared.Logging;
 import view.TUIMainMenu;
