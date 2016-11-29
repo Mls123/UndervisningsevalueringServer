@@ -10,6 +10,7 @@ import shared.LectureDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import java.util.ArrayList;
 
 @Path("/api/teacher")
@@ -43,13 +44,13 @@ public class TeacherEndpoint extends UserEndpoint {
         TeacherController teacherController = new TeacherController();
 
         String courseIdDecrypt = Digester.decrypt(courseId);
-
-        int courseAttendants = 0;
         int courseIdDecrypt2 = Integer.valueOf(courseIdDecrypt);
-        teacherController.getCourseParticipants(courseIdDecrypt2, courseAttendants);
+
+        int courseAttendants = teacherController.getCourseParticipants(courseIdDecrypt2);
 
         if (courseAttendants != 0) {
-            return successResponse(200, courseAttendants);
+            String attendants = String.valueOf(courseAttendants);
+            return successResponse(200, attendants);
         } else {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
@@ -101,10 +102,12 @@ public class TeacherEndpoint extends UserEndpoint {
 
         Gson gson = new Gson();
         TeacherController teacherController = new TeacherController();
+
         String decrypt = Digester.decrypt(courseId);
+        int decryptint = Integer.valueOf(decrypt);
 
         double average = 0;
-        teacherController.calculateAverageRatingOnCourse(decrypt, average);
+        average = teacherController.calculateAverageRatingOnCourse(decryptint, average);
 
         if (average != 0) {
             String returnAverage = String.valueOf(average);

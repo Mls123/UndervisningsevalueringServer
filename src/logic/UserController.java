@@ -137,7 +137,6 @@ public class UserController {
         return lectures;
     }
 
-
     //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
     public boolean softDeleteReview(int userId, int reviewId) {
         boolean isSoftDeleted = true;
@@ -243,5 +242,34 @@ public class UserController {
             Logging.log(e,2,"Kunne ikke hente getStudies");
         }
         return studies;
+    }
+    public ArrayList<LectureDTO> getLectures1(int courseId) {
+
+        ArrayList<LectureDTO> lectures = new ArrayList<LectureDTO>();
+
+        try {
+            Map<String, String> params = new HashMap();
+
+            params.put("course_id", String.valueOf(courseId));
+            String[] attributes = new String[]{"description", "type", "id"};
+
+            ResultSet rs = DBWrapper.getRecords("lecture", attributes, params, null, 0);
+
+            while (rs.next()) {
+                LectureDTO lecture = new LectureDTO();
+                lecture.setLectureId(rs.getInt("id"));
+                lecture.setType(rs.getString("type"));
+                lecture.setDescription(rs.getString("description"));
+
+                lectures.add(lecture);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            Logging.log(e,2,"Kunne ikke hente getLecture");
+
+
+        }
+        return lectures;
     }
 }

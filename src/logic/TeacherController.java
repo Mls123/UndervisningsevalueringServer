@@ -51,14 +51,14 @@ public class TeacherController extends UserController {
      * @return det samlede antal der er tilmeldt kurset.
      */
 
-    public int getCourseParticipants(int courseId, int courseAttendants) {
+    public int getCourseParticipants(int courseId) {
 
         //Forbered MySQL statement
         String table = "course_attendant";
         Map<String, String> whereStmt = new HashMap<String, String>();
         whereStmt.put("course_id", String.valueOf(courseId));
         CachedRowSet rs = null;
-        courseAttendants = 0;
+        int courseAttendants = 0;
 
         //Query courseattendant og find samtlige instanser af det courseID
         try {
@@ -104,7 +104,7 @@ public class TeacherController extends UserController {
             int courseId = rs.getInt("id");
 
             int courseAttendant = 0;
-            int courseAttendants = getCourseParticipants(courseId, courseAttendant);
+            int courseAttendants = getCourseParticipants(courseId);
 
 
             //Find mængde af reviews for den givne lektion
@@ -131,26 +131,20 @@ public class TeacherController extends UserController {
      * @param courseId ID'et på kurset
      * @return Returnerer den gennemsnitlige rating for kurset som en Integer.
      */
-        public double calculateAverageRatingOnCourse(String courseId, double average) {
+        public double calculateAverageRatingOnCourse(int courseId, double average) {
 
-            int lectureId = 0;
+            int lectureIdAntal = 0;
             double sumOfRatings = 0;
-            double numberOfReviews = 0;
 
-            // for (LectureDTO lecture : getLectures1(courseId)) {
-            for (LectureDTO lecture : getLectures(courseId)) {
-                lectureId = lecture.getId();
+            for (LectureDTO lecture : getLectures1(courseId)) {
+                lectureIdAntal = lecture.getId();
+
+                for (ReviewDTO review : getReviewsWithLectureId(lectureIdAntal)) {
+                    sumOfRatings = sumOfRatings + review.getRating();
+                }
             }
 
-            //for (ReviewDTO review : getReviews1(lectureId)) {
-            for (ReviewDTO review : getReviewsWithLectureId(lectureId)) {
-                sumOfRatings = sumOfRatings + review.getRating();
-            }
-
-            //numberOfReviews = getReviews1(lectureId).size();
-            numberOfReviews = getReviewsWithLectureId(lectureId).size();
-
-            average = sumOfRatings / numberOfReviews;
+            average = sumOfRatings / (lectureIdAntal-1);
 
             return average;
         }
