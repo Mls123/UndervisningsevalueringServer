@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Run</OriginalElement>
+  <nodes>
+    <node x="2318.0835193452385" y="1175.0">shared.ReviewDTO</node>
+    <node x="2743.8525204613097" y="4167.5">logic.MainController</node>
+    <node x="3231.271686662946" y="2903.0">shared.StudentDTO</node>
+    <node x="0.0" y="4799.0">logic.ConfigLoader</node>
+    <node x="1964.0835193452385" y="1334.0">shared.StudyDTO</node>
+    <node x="0.0" y="3449.0">view.endpoints.UserEndpoint</node>
+    <node x="3302.9763764880954" y="1307.5">shared.UserDTO</node>
+    <node x="3957.1533830915178" y="0.0">service.DBWrapper</node>
+    <node x="2384.0132347470235" y="2691.0">logic.AdminController</node>
+    <node x="504.5" y="1307.5">security.Digester</node>
+    <node x="3075.8335193452385" y="3581.5">view.TUIAdminMenu</node>
+    <node x="754.875" y="2098.5">logic.CBSParser</node>
+    <node x="2135.4358537946428" y="4167.5">view.endpoints.StudentEndpoint</node>
+    <node x="992.5" y="1281.0">shared.CourseDTO</node>
+    <node x="2779.9775204613097" y="4468.0">view.TUIMainMenu</node>
+    <node x="3502.459186662946" y="2231.0">shared.AdminDTO</node>
+    <node x="4510.153383091518" y="0.0">dal.MYSQLDriver</node>
+    <node x="3402.0913597470235" y="4636.0">Run</node>
+    <node x="1478.4228050595243" y="2019.0">logic.UserController</node>
+    <node x="1717.1025204613095" y="2850.0">shared.TeacherDTO</node>
+    <node x="20.5" y="4088.0">view.endpoints.TeacherEndpoint</node>
+    <node x="1090.665615699405" y="3502.0">logic.TeacherController</node>
+    <node x="508.0" y="4799.0">shared.Logging</node>
+    <node x="2164.6728050595243" y="3581.5">logic.StudentController</node>
+    <node x="1657.7938988095239" y="0.0">shared.LectureDTO</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="logic.MainController" target="logic.TeacherController">
+      <point x="-172.65625" y="-85.5" />
+      <point x="2783.6962704613097" y="4028.0" />
+      <point x="1387.165615699405" y="4028.0" />
+      <point x="0.0" y="191.5" />
+    </edge>
+    <edge source="logic.AdminController" target="shared.CourseDTO">
+      <point x="-295.7142857142858" y="-324.0" />
+      <point x="2433.298949032738" y="2631.0" />
+      <point x="1467.9228050595243" y="2631.0" />
+      <point x="1467.9228050595243" y="1999.0" />
+      <point x="1351.25" y="1999.0" />
+      <point x="71.75" y="271.0" />
+    </edge>
+    <edge source="view.TUIAdminMenu" target="shared.AdminDTO">
+      <point x="134.375" y="-112.0" />
+      <point x="3425.2085193452385" y="3419.0" />
+      <point x="3597.5835193452385" y="3419.0" />
+      <point x="3597.5835193452385" y="2671.0" />
+      <point x="3575.959186662946" y="2671.0" />
+      <point x="-73.5" y="59.0" />
+    </edge>
+    <edge source="logic.AdminController" target="logic.UserController">
+      <point x="-197.14285714285734" y="-324.0" />
+      <point x="2531.8703776041666" y="2621.0" />
+      <point x="1918.0228050595244" y="2621.0" />
+      <point x="125.60000000000014" y="271.0" />
+    </edge>
+    <edge source="logic.AdminController" target="shared.AdminDTO">
+      <point x="295.7142857142858" y="-324.0" />
+      <point x="3024.7275204613097" y="2671.0" />
+      <point x="3526.959186662946" y="2671.0" />
+      <point x="-122.5" y="59.0" />
+    </edge>
+    <edge source="logic.UserController" target="shared.LectureDTO">
+      <point x="-52.333333333333485" y="-271.0" />
+      <point x="1740.0894717261908" y="1155.0" />
+      <point x="1954.7938988095239" y="1155.0" />
+      <point x="0.0" y="562.5" />
+    </edge>
+    <edge source="logic.MainController" target="shared.TeacherDTO">
+      <point x="-119.53125" y="-85.5" />
+      <point x="2836.8212704613097" y="4008.0" />
+      <point x="1970.2691871279762" y="4008.0" />
+      <point x="1970.2691871279762" y="3429.0" />
+      <point x="1911.1025204613095" y="3429.0" />
+      <point x="0.0" y="165.0" />
+    </edge>
+    <edge source="logic.UserController" target="shared.UserDTO">
+      <point x="261.6666666666665" y="-271.0" />
+      <point x="2054.089471726191" y="1969.0" />
+      <point x="3328.2620907738096" y="1969.0" />
+      <point x="-151.71428571428578" y="244.5" />
+    </edge>
+    <edge source="view.TUIMainMenu" target="logic.AdminController">
+      <point x="-196.71428571428578" y="-59.0" />
+      <point x="2812.7632347470235" y="4448.0" />
+      <point x="2018.2144717261908" y="4448.0" />
+      <point x="2018.2144717261908" y="3429.0" />
+      <point x="2433.298949032738" y="3429.0" />
+      <point x="-295.7142857142858" y="324.0" />
+    </edge>
+    <edge source="view.TUIMainMenu" target="shared.UserDTO">
+      <point x="196.71428571428578" y="-59.0" />
+      <point x="3206.191806175595" y="4448.0" />
+      <point x="3897.1533830915178" y="4448.0" />
+      <point x="3897.1533830915178" y="1979.0" />
+      <point x="3631.690662202381" y="1979.0" />
+      <point x="151.71428571428578" y="244.5" />
+    </edge>
+    <edge source="logic.MainController" target="logic.StudentController">
+      <point x="-39.84375" y="-85.5" />
+      <point x="2916.5087704613097" y="3978.0" />
+      <point x="2608.839471726191" y="3978.0" />
+      <point x="177.66666666666652" y="112.0" />
+    </edge>
+    <edge source="view.TUIMainMenu" target="logic.MainController">
+      <point x="-131.14285714285688" y="-59.0" />
+      <point x="2878.334663318453" y="4438.0" />
+      <point x="2796.9775204613097" y="4438.0" />
+      <point x="-159.375" y="85.5" />
+    </edge>
+    <edge source="Run" target="view.TUIMainMenu">
+      <point x="-82.0" y="-59.0" />
+      <point x="3484.0913597470235" y="4611.0" />
+      <point x="3009.4775204613097" y="4611.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="Run" target="shared.AdminDTO">
+      <point x="82.0" y="-59.0" />
+      <point x="3648.0913597470235" y="4611.0" />
+      <point x="3834.3839285714284" y="4611.0" />
+      <point x="3834.3839285714284" y="2671.0" />
+      <point x="3771.959186662946" y="2671.0" />
+      <point x="122.49999999999989" y="59.0" />
+    </edge>
+    <edge source="shared.CourseDTO" target="shared.LectureDTO">
+      <point x="0.0" y="-271.0" />
+      <point x="1279.5" y="1145.0" />
+      <point x="1756.7938988095239" y="1145.0" />
+      <point x="-198.0" y="562.5" />
+    </edge>
+    <edge source="logic.AdminController" target="shared.LectureDTO">
+      <point x="197.14285714285734" y="-324.0" />
+      <point x="2926.1560918898813" y="2581.0" />
+      <point x="2782.5835193452385" y="2581.0" />
+      <point x="2782.5835193452385" y="1155.0" />
+      <point x="2152.793898809524" y="1155.0" />
+      <point x="198.0" y="562.5" />
+    </edge>
+    <edge source="logic.MainController" target="view.TUIMainMenu">
+      <point x="53.125" y="85.5" />
+      <point x="0.0" y="-59.0" />
+    </edge>
+    <edge source="view.endpoints.StudentEndpoint" target="view.endpoints.UserEndpoint">
+      <point x="-120.25" y="-85.5" />
+      <point x="2255.6858537946428" y="4058.0" />
+      <point x="458.25" y="4058.0" />
+      <point x="152.75" y="244.5" />
+    </edge>
+    <edge source="logic.AdminController" target="view.TUIAdminMenu">
+      <point x="197.14285714285734" y="324.0" />
+      <point x="2926.1560918898813" y="3379.0" />
+      <point x="3210.2085193452385" y="3379.0" />
+      <point x="-80.625" y="-112.0" />
+    </edge>
+    <edge source="view.endpoints.TeacherEndpoint" target="view.endpoints.UserEndpoint">
+      <point x="-132.25" y="-165.0" />
+      <point x="-152.75" y="244.5" />
+    </edge>
+    <edge source="shared.TeacherDTO" target="shared.UserDTO">
+      <point x="97.0" y="-165.0" />
+      <point x="2008.1025204613095" y="2671.0" />
+      <point x="2793.5835193452385" y="2671.0" />
+      <point x="2793.5835193452385" y="1979.0" />
+      <point x="3378.833519345238" y="1979.0" />
+      <point x="-101.14285714285734" y="244.5" />
+    </edge>
+    <edge source="logic.MainController" target="shared.StudentDTO">
+      <point x="119.53125" y="-85.5" />
+      <point x="3075.8837704613097" y="4038.0" />
+      <point x="3659.0647321428573" y="4038.0" />
+      <point x="3659.0647321428573" y="3399.0" />
+      <point x="3535.771686662946" y="3399.0" />
+      <point x="130.5" y="112.0" />
+    </edge>
+    <edge source="logic.MainController" target="shared.UserDTO">
+      <point x="199.21875" y="-85.5" />
+      <point x="3155.5712704613097" y="4068.0" />
+      <point x="3762.5647321428573" y="4068.0" />
+      <point x="3762.5647321428573" y="3429.0" />
+      <point x="3886.1533830915178" y="3429.0" />
+      <point x="3886.1533830915178" y="1989.0" />
+      <point x="3581.1192336309527" y="1989.0" />
+      <point x="101.14285714285734" y="244.5" />
+    </edge>
+    <edge source="logic.AdminController" target="shared.StudyDTO">
+      <point x="0.0" y="-324.0" />
+      <point x="2729.0132347470235" y="2601.0" />
+      <point x="2214.5835193452385" y="2601.0" />
+      <point x="83.5" y="218.0" />
+    </edge>
+    <edge source="logic.UserController" target="security.Digester">
+      <point x="-261.66666666666674" y="-271.0" />
+      <point x="1530.7561383928576" y="1989.0" />
+      <point x="855.5" y="1989.0" />
+      <point x="117.0" y="244.5" />
+    </edge>
+    <edge source="logic.UserController" target="shared.ReviewDTO">
+      <point x="157.0" y="-271.0" />
+      <point x="1949.4228050595243" y="1959.0" />
+      <point x="2431.5835193452385" y="1959.0" />
+      <point x="-113.5" y="377.0" />
+    </edge>
+    <edge source="logic.MainController" target="shared.AdminDTO">
+      <point x="146.09375" y="-85.5" />
+      <point x="3102.4462704613097" y="4048.0" />
+      <point x="3740.5647321428573" y="4048.0" />
+      <point x="3740.5647321428573" y="2671.0" />
+      <point x="3673.959186662946" y="2671.0" />
+      <point x="24.499999999999886" y="59.0" />
+    </edge>
+    <edge source="shared.TeacherDTO" target="shared.CourseDTO">
+      <point x="-97.0" y="-165.0" />
+      <point x="1814.1025204613095" y="2651.0" />
+      <point x="1274.0" y="2651.0" />
+      <point x="1274.0" y="1999.0" />
+      <point x="1207.75" y="1999.0" />
+      <point x="-71.75" y="271.0" />
+    </edge>
+    <edge source="view.endpoints.UserEndpoint" target="logic.UserController">
+      <point x="0.0" y="-244.5" />
+      <point x="305.5" y="2661.0" />
+      <point x="1541.2228050595243" y="2661.0" />
+      <point x="-251.20000000000005" y="271.0" />
+    </edge>
+    <edge source="logic.UserController" target="shared.StudyDTO">
+      <point x="52.33333333333326" y="-271.0" />
+      <point x="1844.7561383928576" y="1949.0" />
+      <point x="2047.5835193452385" y="1949.0" />
+      <point x="-83.5" y="218.0" />
+    </edge>
+    <edge source="view.TUIAdminMenu" target="shared.StudentDTO">
+      <point x="80.625" y="-112.0" />
+      <point x="3371.4585193452385" y="3429.0" />
+      <point x="3361.771686662946" y="3429.0" />
+      <point x="-43.5" y="112.0" />
+    </edge>
+    <edge source="logic.TeacherController" target="shared.TeacherDTO">
+      <point x="148.25" y="-191.5" />
+      <point x="1535.415615699405" y="3429.0" />
+      <point x="1781.7691871279762" y="3429.0" />
+      <point x="-129.33333333333326" y="165.0" />
+    </edge>
+    <edge source="logic.MainController" target="view.TUIAdminMenu">
+      <point x="66.40625" y="-85.5" />
+      <point x="3022.7587704613097" y="4018.0" />
+      <point x="3290.8335193452385" y="4018.0" />
+      <point x="0.0" y="112.0" />
+    </edge>
+    <edge source="shared.StudentDTO" target="shared.UserDTO">
+      <point x="0.0" y="-112.0" />
+      <point x="3405.271686662946" y="1999.0" />
+      <point x="3479.9763764880954" y="1999.0" />
+      <point x="0.0" y="244.5" />
+    </edge>
+    <edge source="view.endpoints.TeacherEndpoint" target="logic.TeacherController">
+      <point x="132.25" y="-165.0" />
+      <point x="417.25" y="4068.0" />
+      <point x="1189.4989490327382" y="4068.0" />
+      <point x="-197.66666666666674" y="191.5" />
+    </edge>
+    <edge source="logic.AdminController" target="shared.ReviewDTO">
+      <point x="98.57142857142844" y="-324.0" />
+      <point x="2827.584663318452" y="2591.0" />
+      <point x="2658.5835193452385" y="2591.0" />
+      <point x="113.5" y="377.0" />
+    </edge>
+    <edge source="logic.TeacherController" target="logic.UserController">
+      <point x="-148.25" y="-191.5" />
+      <point x="1238.915615699405" y="2671.0" />
+      <point x="1666.8228050595244" y="2671.0" />
+      <point x="-125.59999999999991" y="271.0" />
+    </edge>
+    <edge source="view.TUIMainMenu" target="view.TUIAdminMenu">
+      <point x="131.14285714285734" y="-59.0" />
+      <point x="3140.6203776041666" y="4438.0" />
+      <point x="3509.140811011905" y="4438.0" />
+      <point x="3509.140811011905" y="4018.0" />
+      <point x="3434.166852678572" y="4018.0" />
+      <point x="143.33333333333348" y="112.0" />
+    </edge>
+    <edge source="view.TUIAdminMenu" target="logic.AdminController">
+      <point x="-188.125" y="-112.0" />
+      <point x="3102.7085193452385" y="3399.0" />
+      <point x="2729.0132347470235" y="3399.0" />
+      <point x="0.0" y="324.0" />
+    </edge>
+    <edge source="view.TUIAdminMenu" target="shared.UserDTO">
+      <point x="26.875" y="-112.0" />
+      <point x="3317.7085193452385" y="3359.0" />
+      <point x="3220.771686662946" y="3359.0" />
+      <point x="3220.771686662946" y="1989.0" />
+      <point x="3429.404947916667" y="1989.0" />
+      <point x="-50.57142857142844" y="244.5" />
+    </edge>
+    <edge source="view.endpoints.StudentEndpoint" target="logic.StudentController">
+      <point x="120.25" y="-85.5" />
+      <point x="2496.1858537946428" y="4048.0" />
+      <point x="2253.506138392858" y="4048.0" />
+      <point x="-177.66666666666652" y="112.0" />
+    </edge>
+    <edge source="shared.AdminDTO" target="shared.UserDTO">
+      <point x="0.0" y="-59.0" />
+      <point x="3649.459186662946" y="1999.0" />
+      <point x="3530.547805059524" y="1999.0" />
+      <point x="50.57142857142844" y="244.5" />
+    </edge>
+    <edge source="logic.MainController" target="logic.AdminController">
+      <point x="-13.28125" y="-85.5" />
+      <point x="2943.0712704613097" y="3968.0" />
+      <point x="2836.2353050595243" y="3968.0" />
+      <point x="2836.2353050595243" y="3419.0" />
+      <point x="2531.8703776041666" y="3419.0" />
+      <point x="-197.14285714285734" y="324.0" />
+    </edge>
+    <edge source="logic.StudentController" target="shared.StudentDTO">
+      <point x="133.25" y="-112.0" />
+      <point x="2564.4228050595243" y="3429.0" />
+      <point x="3274.771686662946" y="3429.0" />
+      <point x="-130.5" y="112.0" />
+    </edge>
+    <edge source="logic.CBSParser" target="shared.CourseDTO">
+      <point x="0.0" y="-191.5" />
+      <point x="980.875" y="1999.0" />
+      <point x="1064.25" y="1999.0" />
+      <point x="-215.25" y="271.0" />
+    </edge>
+    <edge source="logic.MainController" target="security.Digester">
+      <point x="-199.21875" y="-85.5" />
+      <point x="2757.1337704613097" y="4038.0" />
+      <point x="621.5" y="4038.0" />
+      <point x="-117.0" y="244.5" />
+    </edge>
+    <edge source="logic.StudentController" target="logic.UserController">
+      <point x="-133.25" y="-112.0" />
+      <point x="2297.9228050595243" y="3419.0" />
+      <point x="2291.3525204613097" y="3419.0" />
+      <point x="2291.3525204613097" y="2641.0" />
+      <point x="1792.4228050595243" y="2641.0" />
+      <point x="0.0" y="271.0" />
+    </edge>
+    <edge source="logic.UserController" target="shared.CourseDTO">
+      <point x="-157.0" y="-271.0" />
+      <point x="1635.4228050595243" y="1979.0" />
+      <point x="1494.75" y="1979.0" />
+      <point x="215.25" y="271.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.2" x="2537.0" y="2485.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

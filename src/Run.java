@@ -45,8 +45,7 @@ public class Run {
         AdminDTO adminDTO = new AdminDTO();
         TUIMainMenu tuiMainMenu = new TUIMainMenu();
         tuiMainMenu.tUILogIn(adminDTO);
-
-
+        
         System.in.read();
         System.out.println("Hit return to stop...");
         System.out.println("Stopping server");
