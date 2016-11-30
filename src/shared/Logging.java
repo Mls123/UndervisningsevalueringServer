@@ -5,18 +5,16 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//TODO: Needs proper comments1231231
 public class Logging {
 
     /**
-    Opretter en metode som er tilgængelig for alle klasser
-     **/
+     * Opretter en metode som er tilgængelig for alle klasser
+     */
     protected static final Logger logger = Logger.getLogger("logging");
 
     /**
      * Opretter if-else statement der kigger ind i Config-filen og differentierer mellem de forskellige levels.
      * Der er defineret niveau 1 og niveau 2, hvis ingen af disse niveauer findes så er den pr. definition SEVERE
-     *
      * @param debugLevel
      */
     public static void initiateLog(String debugLevel){
@@ -33,10 +31,7 @@ public class Logging {
      * Følgende opstilles som en switch case.
      * Opretter metode med tre parametre: Exception, level og msg.
      * Filehandler sørger at der oprettes en tekstfil ved navn "application.log" hvorpå data tilskrives.
-     * Til sidst lukkes try-catch , ved et finally som altid eksekveres 
-     *
-     *
-
+     * Til sidst lukkes try-catch , ved et finally som altid eksekveres
      */
     public static void log(Exception ex, int level, String msg) {
         FileHandler fh = null;

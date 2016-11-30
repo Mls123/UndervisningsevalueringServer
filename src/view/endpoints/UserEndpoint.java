@@ -14,7 +14,6 @@ public class UserEndpoint {
 
     /**
      * En metode til at hente lektioner for et enkelt kursus i form af en JSON String.
-     *
      * @param code Fagkoden på det kursus man ønsker at hente.
      * @return En JSON String
      */
@@ -62,6 +61,11 @@ public class UserEndpoint {
         }
     }
 
+    /**
+     * en metode der henter reviews udfra et userId.
+     * @param userId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/reviews/{userId}")
@@ -81,6 +85,11 @@ public class UserEndpoint {
             }
     }
 
+    /**
+     * en metode der henter reviews udfra et lectureId
+     * @param lectureId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/review/{lectureId}")
@@ -100,6 +109,11 @@ public class UserEndpoint {
         }
     }
 
+    /**
+     * en metode der henter study udfra shortname
+     * @param shortname
+     * @return
+     */
     @GET
     @Path("/study/{shortname}")
     public Response getStudy(@PathParam("shortname") String shortname) {
@@ -118,6 +132,11 @@ public class UserEndpoint {
         }
     }
 
+    /**
+     * en metode der bruges ved kald af URL med /login bagerst - den modtager data fra klienten som vaideres om de data findes i databasen
+     * @param data
+     * @return
+     */
     @POST
     @Consumes("application/json")
     @Path("/login")
@@ -135,19 +154,42 @@ public class UserEndpoint {
         }
     }
 
+    /**
+     * Denne metode er til ved et error response, når der skal sendes data tilbage til klienten.
+     * @param status
+     * @param message
+     * @return
+     */
     protected Response errorResponse(int status, String message) {
 
+        /**
+         * Denne er med kryptering
+         */
         return Response.status(status).entity(new Gson().toJson(Digester.encrypt("{\"message\": \"" + message + "\"}"))).build();
+
+        /**
+         * Denne er uden kryptering
+         */
         //return Response.status(status).entity(new Gson().toJson("{\"message\": \"" + message + "\"}")).build());
     }
 
+    /**
+     * Denne metode er til ved en succes response, hvorså data bliver sendt til klienten.
+     * @param status
+     * @param data
+     * @return
+     */
     protected Response successResponse(int status, Object data) {
         Gson gson = new Gson();
 
-        //Denne er til og aktivere kryptering
+        /**
+         * Denne er til og aktivere kryptering
+         */
         return Response.status(status).entity((Digester.encrypt(gson.toJson(data)))).build();
 
-        //Denne er til og få Json udskrevet i browseren
+        /**
+         * Denne er til og få Json udskrevet i browseren
+         */
         //return Response.status(status).entity(gson.toJson(data)).build();
     }
 }

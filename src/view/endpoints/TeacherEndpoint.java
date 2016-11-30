@@ -16,6 +16,11 @@ import java.util.ArrayList;
 @Path("/api/teacher")
 public class TeacherEndpoint extends UserEndpoint {
 
+    /**
+     * Dette er en delete metode der soft deleter et review udfra er reviewId
+     * @param reviewId
+     * @return
+     */
     @DELETE
     @Consumes("application/json")
     @Path("/review/{reviewId}")
@@ -35,6 +40,11 @@ public class TeacherEndpoint extends UserEndpoint {
         }
     }
 
+    /**
+     * Dette er en get metode der henter antallet af course participation udfra et courseId
+     * @param courseId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/courseParticipation/{courseId}")
@@ -55,6 +65,12 @@ public class TeacherEndpoint extends UserEndpoint {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
     }
+
+    /**
+     * Dette er en get metode der sender gennemsnitlig rating af en lecture, udfra et lectureId
+     * @param lectureId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/averageLectureRating/{lectureId}")
@@ -75,6 +91,12 @@ public class TeacherEndpoint extends UserEndpoint {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
     }
+
+    /**
+     * Dette er en get metode der henter review participation udfra et lectureId
+     * @param lectureId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/reviewParticipation/{lectureId}")
@@ -95,6 +117,12 @@ public class TeacherEndpoint extends UserEndpoint {
             return errorResponse(404, "Failed. Couldn't get lectures.");
         }
     }
+
+    /**
+     * Dette er en get metode der henter gennemsnitlig rating af et kursus udfra et kursusId
+     * @param courseId
+     * @return
+     */
     @GET
     @Consumes("applications/json")
     @Path("/averageCourseRating/{courseId}")

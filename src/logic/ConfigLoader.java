@@ -12,12 +12,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/*ConfigLoader anvendes til at hente den unikke config.Json fil, vi har uploadet, hvilket gør f.eks database adgangen uafhægig af hvilken computer den ligger på*/
+/**
+ * ConfigLoader anvendes til at hente den unikke config.Json fil, vi har uploadet, hvilket gør f.eks database adgangen uafhægig af hvilken computer den ligger på
+ */
 public class ConfigLoader {
 
-    /* Static variable indlæses alle som String, fordi de hentes fra config.Json.
-    OBS! ServerPort skal anvendes som en int, og dette løses med en
-       Integer.parseInt(), der hvor ServerPorten skal anvendes.
+    /**
+     * Static variable indlæses alle som String, fordi de hentes fra config.Json
+     * OBS! ServerPort skal anvendes som en int, og dette løses med en
+     * Integer.parseInt(), der hvor ServerPorten skal anvendes.
      */
     public static String DB_TYPE;
     public static String DB_HOST;
@@ -35,8 +38,10 @@ public class ConfigLoader {
     public static String DEBUG;
     public static String ENCRYPTION;
 
-    /* Der oprettes en static final kombineret med SINGLETON(design mønster), som har til formål,
-    at kontrollere intialiseringen af klassen for derved at sørge for at objektet ikke kan instansieres mere end en gang */
+    /**
+     * Der oprettes en static final kombineret med SINGLETON(design mønster), som har til formål,
+     * at kontrollere intialiseringen af klassen for derved at sørge for at objektet ikke kan instansieres mere end en gang
+     */
 
     private static final ConfigLoader SINGLETON = new ConfigLoader();
 
@@ -44,12 +49,16 @@ public class ConfigLoader {
         return SINGLETON;
     }
 
-    /* Når metoden ConfigLoader køres, startes parseConfig()*/
+    /**
+     * Når metoden ConfigLoader køres, startes parseConfig()
+     */
     private ConfigLoader() {
         parseConfig();
     }
 
-    /* parseConfig retunerer samtlige værdier fra den lokale Config.Json-fil*/
+    /**
+     * parseConfig retunerer samtlige værdier fra den lokale Config.Json-fil
+     */
     public static void parseConfig() {
         JsonParser jparser = new JsonParser();
         JsonReader jsonReader;

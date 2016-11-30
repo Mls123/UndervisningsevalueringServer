@@ -15,6 +15,11 @@ import javax.ws.rs.core.Response;
 @Path("/api/student")
 public class StudentEndpoint extends UserEndpoint {
 
+    /**
+     * Dette er en post metode (en tilføj metode) der tilføjer et review.
+     * @param json
+     * @return
+     */
     @POST
     @Consumes("application/json")
     @Path("/review")
@@ -35,6 +40,11 @@ public class StudentEndpoint extends UserEndpoint {
         }
     }
 
+    /**
+     * Dette er en delete metode der soft deleter et review udfra et reviewId
+     * @param reviewId
+     * @return
+     */
     @DELETE
     @Consumes("application/json")
     @Path("/review/{reviewId}")

@@ -226,6 +226,13 @@ public class AdminController extends UserController {
 
     }
 
+    /**
+     * Denne metode henter kurser udfra det study kurset tilhører.
+     *
+     * @param idStudyChoice
+     * @return
+     */
+
     public ArrayList<CourseDTO> getCourseStudy(int idStudyChoice){
         ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
 
@@ -254,6 +261,12 @@ public class AdminController extends UserController {
         return courses;
     }
 
+    /**
+     * Henter kurser udfra userId og et kursusId
+     * @param idCourseChoice
+     * @param userId
+     * @return
+     */
     private ArrayList<UserDTO> setUserCourse(int idCourseChoice, int userId) {
 
         ArrayList<UserDTO> userscourse = new ArrayList<UserDTO>();
@@ -273,6 +286,10 @@ public class AdminController extends UserController {
 
     }
 
+    /**
+     * henter alle users
+     * @return
+     */
         private ArrayList<AdminDTO> getUsers() {
 
             ArrayList<AdminDTO> users = new ArrayList<AdminDTO>();
@@ -298,7 +315,10 @@ public class AdminController extends UserController {
 
         }
 
-
+    /**
+     * henter alle kurser på baggrund af ingen parametre
+     * @return
+     */
     private ArrayList<CourseDTO> getCourses() {
 
         ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
@@ -323,6 +343,11 @@ public class AdminController extends UserController {
         return courses;
     }
 
+    /**
+     * henter alle lectures på baggrund af et kursusId
+     * @param course
+     * @return
+     */
     public ArrayList<LectureDTO> getLectures(String course) {
 
         ArrayList<LectureDTO> lectures = new ArrayList<LectureDTO>();
@@ -355,6 +380,11 @@ public class AdminController extends UserController {
     }
 
 
+    /**
+     * henter reviews udfra et lectureId
+     * @param lectureId
+     * @return
+     */
     public ArrayList<ReviewDTO> getReviews(int lectureId) {
 
         ArrayList<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
@@ -386,6 +416,10 @@ public class AdminController extends UserController {
     }
 
 
+    /**
+     * henter studies udfra ingen parametre.
+     * @return
+     */
     private ArrayList<StudyDTO> getStudies() {
 
         ArrayList<StudyDTO> studies = new ArrayList<StudyDTO>();

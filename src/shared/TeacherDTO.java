@@ -2,6 +2,9 @@ package shared;
 
 import java.util.ArrayList;
 
+/**
+ * Dette er et DTO af teacher, med de attributter som DTOen kan indeholde.
+ */
 public class TeacherDTO extends UserDTO {
 
 	private static final long serialVersionUID = 1L;

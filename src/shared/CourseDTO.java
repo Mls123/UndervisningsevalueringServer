@@ -3,17 +3,19 @@ package shared;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Dette er et DTO af course, med de attributter som DTOen kan indeholde.
+ */
 public class CourseDTO {
 
     @SerializedName("events")
     @Expose
 
-    /*
-        Events er vores samling af LectureDTO objekter. Det havde givet mere mening at kalde denne variabel
-        for "lectures", men "events" var nødvendigt for at kunne parse Json dataen ind i CBS parser
+    /**
+     * Events er vores samling af LectureDTO objekter. Det havde givet mere mening at kalde denne variabel
+     * for "lectures", men "events" var nødvendigt for at kunne parse Json dataen ind i CBS parser
      */
     private LectureDTO[] events;
-
     private String id;
     private String code;
     private String displaytext;

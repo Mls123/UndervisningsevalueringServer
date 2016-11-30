@@ -1,5 +1,8 @@
 package shared;
 
+/**
+ * Dette er et DTO af student, med de attributter som DTOen kan indeholde.
+ */
 public class StudentDTO extends UserDTO {
 
 	private static final long serialVersionUID = 1L;

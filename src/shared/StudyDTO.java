@@ -1,7 +1,7 @@
 package shared;
 
 /**
- * Created by andershoumann on 28/10/2016.
+ * Dette er et DTO af study, med de attributter som DTOen kan indeholde.
  */
 public class StudyDTO {
 

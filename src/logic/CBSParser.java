@@ -1,5 +1,4 @@
 package logic;
-//TODO: Class and methods needs documentation!
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
@@ -16,7 +15,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
- * Created by Kasper on 15/10/2016.
  * En klasse hvis overordnede formål er, at indlæse data i Json format, og sørge for, at data bliver omdannet til
  * java objekter, som efterfølgende bliver oprettet i databasen ved hjælp af DBWrapper-klassen.
  */

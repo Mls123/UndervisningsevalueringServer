@@ -14,15 +14,23 @@ public class Run {
 
         HttpServer server = null;
 
-        //Loader configfilen
+        /**
+         * Loader configfilen
+         */
         ConfigLoader.parseConfig();
 
         try {
             PrintStream stdout = System.out;
             System.setOut(null);
+            /**
+             * Her oprettes serverens URL
+             */
             server = HttpServerFactory.create("http://" + ConfigLoader.SERVER_ADDRESS + ":" + ConfigLoader.SERVER_PORT + "/");
             System.setOut(stdout);
         }catch(ArrayIndexOutOfBoundsException a){
+            /**
+             * Hvis en ArrayIndexOutOfBoundsException sker, så sørger linje 34 for at det bliver logget
+             */
             Logging.log(a, 3, "Fejl. Sysem startede ikke!");
             System.exit(20);
         }
@@ -33,19 +41,21 @@ public class Run {
         Logging.initiateLog(ConfigLoader.DEBUG);
 
         try {
+            /**
+             * Parseren loader alle API infomrtaionerne ind i databasen, denne er udkommenteret da der mangler en exception der validere om dataen allerede findes.
+             */
             //CBSParser.parseCBSData();
         } catch (Exception e) {
             System.out.println(e);
         }
 
-        //Loader courses og lectures ind til databasen
         System.out.println("Server running");
         System.out.println("Visit: http://" + ConfigLoader.SERVER_ADDRESS + ":" + ConfigLoader.SERVER_PORT + "/");
 
         AdminDTO adminDTO = new AdminDTO();
         TUIMainMenu tuiMainMenu = new TUIMainMenu();
         tuiMainMenu.tUILogIn(adminDTO);
-        
+
         System.in.read();
         System.out.println("Hit return to stop...");
         System.out.println("Stopping server");

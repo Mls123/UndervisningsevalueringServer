@@ -1,7 +1,10 @@
 package shared;
 
 import java.io.Serializable;
- 
+
+/**
+ * Dette er et DTO af user, med de attributter som DTOen kan indeholde.
+ */
 public class UserDTO implements Serializable {
 	
 	private int id;
@@ -15,8 +18,7 @@ public class UserDTO implements Serializable {
         this.password = password;
         this.type = type;
     }
-    
-    //Must be defined
+
     public UserDTO() {
     }
 

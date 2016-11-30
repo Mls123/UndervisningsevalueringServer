@@ -15,9 +15,12 @@ import java.util.Map;
 
 public class UserController {
 
-    public UserController() {
-    }
-
+    /**
+     * Login metode der hasher passwordet en gang, og kalder på databasen og validere om brugeren findes.
+     * @param cbs_email
+     * @param password
+     * @return
+     */
     public UserDTO login(String cbs_email, String password) {
 
         UserDTO user = new UserDTO();
@@ -48,6 +51,11 @@ public class UserController {
         return null;
     }
 
+    /**
+     * Denne metode henter reviews ud fra et userId, det vil sige den user, brugeren er logget ind som.
+     * @param userId
+     * @return
+     */
     public ArrayList<ReviewDTO> getReviewsWithUserId(int userId) {
 
         ArrayList<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
@@ -77,6 +85,11 @@ public class UserController {
         return reviews;
     }
 
+    /**
+     * Denne metode henter reviews ud fra et lectureId
+     * @param lectureId
+     * @return
+     */
     public ArrayList<ReviewDTO> getReviewsWithLectureId(int lectureId) {
 
         ArrayList<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
@@ -106,6 +119,12 @@ public class UserController {
         return reviews;
     }
 
+    /**
+     * denne metode henter lectures, udfra coden på et kursus. for mig er det course_Id der kigges på.
+     * fordi jeg har haft problemer med CBSparseren og Lectures i databasen.
+     * @param code
+     * @return
+     */
     public ArrayList<LectureDTO> getLectures(String code) {
 
         ArrayList<LectureDTO> lectures = new ArrayList<LectureDTO>();
@@ -137,7 +156,9 @@ public class UserController {
         return lectures;
     }
 
-    //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
+    /**
+     *  Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
+     */
     public boolean softDeleteReview(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 
@@ -160,7 +181,9 @@ public class UserController {
         return isSoftDeleted;
     }
 
-    //Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
+    /**
+     *  Metode der softdeleter et review fra databasen - skal ind i AdminControlleren, da dette er moden for at slette et review uafhængigt af brugertype.
+     */
     public boolean softDeleteReviewMetode2(int userId, int reviewId) {
         boolean isSoftDeleted = true;
 
@@ -188,7 +211,11 @@ public class UserController {
         return isSoftDeleted;
     }
 
-
+    /**
+     * henter kurser ud fra et userId.
+     * @param userId
+     * @return
+     */
     public ArrayList<CourseDTO> getCourses(int userId) {
 
         ArrayList<CourseDTO> courses = new ArrayList<CourseDTO>();
@@ -217,6 +244,11 @@ public class UserController {
         return courses;
     }
 
+    /**
+     * henter studies udfra et shortname
+     * @param shortname
+     * @return
+     */
     public ArrayList<StudyDTO> getStudies(String shortname) {
 
         ArrayList<StudyDTO> studies = new ArrayList<StudyDTO>();
@@ -243,7 +275,13 @@ public class UserController {
         }
         return studies;
     }
-    public ArrayList<LectureDTO> getLectures1(int courseId) {
+
+    /**
+     * henter lectures ud fra et courseId
+     * @param courseId
+     * @return
+     */
+    public ArrayList<LectureDTO> getLecturesFromCourseId(int courseId) {
 
         ArrayList<LectureDTO> lectures = new ArrayList<LectureDTO>();
 

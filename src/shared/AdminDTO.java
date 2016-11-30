@@ -1,5 +1,8 @@
 package shared;
 
+/**
+ * Dette er et DTO af admin, med de attributter som DTOen kan indeholde.
+ */
 public class AdminDTO extends UserDTO {
 
 	private static final long serialVersionUID = 1L;

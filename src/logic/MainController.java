@@ -80,7 +80,10 @@ public class MainController {
             }
         }
 
-        //hvis der ingen ens værdi findes med det indtastede id og id i DB vil denne catch kaste brugeren videre til tuiAdminMenuen, hvor man kan få muligheden for og prøve igen osv.
+        /**
+         * hvis der ingen ens værdi findes med det indtastede id og id i DB vil denne catch kaste brugeren videre til tuiAdminMenuen,
+         * hvor man kan få muligheden for og prøve igen osv.
+         */
         catch (SQLException e) {
             e.printStackTrace();
             Logging.log(e,1,"Brugeren kunne ikke logge ind som teacher eller student.");

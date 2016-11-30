@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * Her ses TUIAdminMenuen, som er admin's text-baseret user interface menu.
- **/
+ */
 public class TUIAdminMenu {
 
     private AdminController adminController;
@@ -25,7 +25,7 @@ public class TUIAdminMenu {
 
             /**
              * Her ses de muligheder som admin har i en menu.
-             **/
+             */
 
             System.out.println("Velkommen til Undervisningsevaluering for CBS administratorer!");
             System.out.println("Du er logget ind som: " +  adminDTO.getCbsMail());
@@ -38,7 +38,7 @@ public class TUIAdminMenu {
             /**
              * Her modtager vi admins respons til ovenstående menu, og sender dem i gennem en switch som sender
              * admin videre til den valgte metode. fx. 1 starter adminController.createUser();
-             **/
+             */
 
             int choice = input.nextInt();
 
@@ -77,7 +77,7 @@ public class TUIAdminMenu {
 
 	/**
      * Her er en catch som træder i kraft, hvis brugeren taster en invalid vaerdi.
-     **/
+     */
         } catch (InputMismatchException e) {
             System.out.printf("Systemet fandt fejlen: %s \n", e);
             System.out.println("Du indtastede ikke et heltal, menuen kører forfra");
@@ -88,7 +88,7 @@ public class TUIAdminMenu {
     /**
      * TUIChooseCourseId er bruges som "søgekriterie" til at finde frem til det review der ønskes slettet.
      * Logikken bag denne metode ses i AdminControlleren
-     **/
+     */
     public int TUIChooseCourseId(int idCourseChoice) {
 
         Scanner input = new Scanner(System.in);
@@ -102,7 +102,7 @@ public class TUIAdminMenu {
     /**
      * TUICreateUser tager admins input som den nye brugers parametre: CBS mail, Password og Type
      * og sender variablerne videre til logik laget (AdminController)
-     **/
+     */
     public Object TUICreateUser(AdminDTO adminDTO, AdminDTO newUser){
 
         Scanner mail_input = new Scanner(System.in);

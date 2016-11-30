@@ -16,19 +16,13 @@ public class StudentController extends UserController {
         super();
     }
 
-    /*
-    public static void main(String[] args) {
-
-        StudentController controller = new StudentController();
-        controller.addReview(new ReviewDTO(1, 1, 1, "1", true));
-    }
-*/
-
     public void loadStudent(StudentDTO currentStudent) {
         this.currentStudent = currentStudent;
     }
 
-    //Metode til at indsætte et review i databasen
+    /**
+     * Metode til at indsætte et review i databasen
+     */
     public boolean addReview(ReviewDTO review) {
         boolean isAdded = true;
 
@@ -51,6 +45,11 @@ public class StudentController extends UserController {
         return isAdded;
     }
 
+    /**
+     * Denne metode er til og soft delete et review, altså sætte "id_deleted" lig med 1.
+     * @param reviewId
+     * @return
+     */
     public boolean softDeleteReview(int reviewId) {
         boolean isSoftDeleted = true;
 

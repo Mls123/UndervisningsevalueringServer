@@ -18,11 +18,12 @@ public class MYSQLDriver {
     private static final String USERNAME = ConfigLoader.DB_USER;
     private static final String PASSWORD = ConfigLoader.DB_PASS;
 
-
-    public MYSQLDriver(){
-
-    }
-
+    /**
+     * denne metode er til og execute et sql statement i databasen.
+     * @param sql
+     * @return
+     * @throws SQLException
+     */
     public static CachedRowSet executeSQL(String sql) throws SQLException {
         ResultSet result = null;
         CachedRowSet cr = new CachedRowSetImpl();
@@ -40,6 +41,11 @@ public class MYSQLDriver {
 
     }
 
+    /**
+     * Denne metode updatere udfra et sql statement, noget i databasen
+     * @param sql
+     * @throws SQLException
+     */
     public static void updateSQL(String sql) throws SQLException{
         try{
             dbConnection = DriverManager.getConnection(URL, USERNAME, PASSWORD);

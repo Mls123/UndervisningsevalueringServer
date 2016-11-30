@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 /**
  * TUIMainMenu er til den første menu som admin ser inden der logges ind.
- **/
+ */
 public class TUIMainMenu {
 
     private MainController mainController;
@@ -22,7 +22,7 @@ public class TUIMainMenu {
 
  /**
  * TUILogin er menuen hvor Admin kan vælge mellem at logge ind eller lukke programmet.
- **/
+ */
     public Object tUILogIn(AdminDTO adminDTO) {
         MainController mainController = new MainController();
         Scanner input = new Scanner(System.in);
@@ -36,7 +36,7 @@ public class TUIMainMenu {
             int choice = input.nextInt();
 /**
  * Denne switch tager admins input (choice) og sender dem videre til den valgte case.
- **/
+ */
             switch (choice) {
                 case 0:
                     System.out.println("Programmet er stoppet.");

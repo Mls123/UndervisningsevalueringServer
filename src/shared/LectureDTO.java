@@ -5,6 +5,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Dette er et DTO af lectures, med de attributter som DTOen kan indeholde.
+ */
 public class LectureDTO {
 
     private int id;
@@ -20,7 +23,6 @@ public class LectureDTO {
     public LectureDTO() {
     }
 
-
     public LectureDTO(int courseId, String type, String description, Date startDate, Date endDate, String location, int id) {
         this.courseId = courseId;
         this.type = type;
@@ -34,8 +36,6 @@ public class LectureDTO {
     public int getId() {
         return id;
     }
-
-
 
     public int getLectureId() {
         return id;

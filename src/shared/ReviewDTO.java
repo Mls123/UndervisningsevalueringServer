@@ -1,5 +1,8 @@
 package shared;
 
+/**
+ * Dette er et DTO af review, med de attributter som DTOen kan indeholde.
+ */
 public class ReviewDTO {
 
     private int id;

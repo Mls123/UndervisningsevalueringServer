@@ -136,7 +136,7 @@ public class TeacherController extends UserController {
             int lectureIdAntal = 0;
             double sumOfRatings = 0;
 
-            for (LectureDTO lecture : getLectures1(courseId)) {
+            for (LectureDTO lecture : getLecturesFromCourseId(courseId)) {
                 lectureIdAntal = lecture.getId();
 
                 for (ReviewDTO review : getReviewsWithLectureId(lectureIdAntal)) {
@@ -149,7 +149,11 @@ public class TeacherController extends UserController {
             return average;
         }
 
-
+    /**
+     * Soft deleter et review ved og sætte "is_deleted" lig med 1.
+     * @param reviewId
+     * @return
+     */
     public boolean softDeleteReview(int reviewId) {
         boolean isSoftDeleted = true;
 
