@@ -24,12 +24,15 @@ public class TeacherEndpoint extends UserEndpoint {
     @DELETE
     @Consumes("application/json")
     @Path("/review/{reviewId}")
-    public Response deleteReview(@PathParam("reviewId") int reviewId) {
+    public Response deleteReview(@PathParam("reviewId") String reviewId) {
         Gson gson = new Gson();
+
+        String decrypt = Digester.decrypt(reviewId);
+        int decrypt1 = Integer.valueOf(decrypt);
 
         TeacherController teacherController = new TeacherController();
 
-        boolean isDeleted = teacherController.softDeleteReview(reviewId);
+        boolean isDeleted = teacherController.softDeleteReview(decrypt1);
 
         if (isDeleted) {
             String toJson = gson.toJson(Digester.encrypt(gson.toJson(isDeleted)));

@@ -111,7 +111,6 @@ public class Digester {
      * Metode til at dekryptering
      * BASE64Decoder er en indbygget metode til dekryptering
      */
-
     private static byte[] base64Decode(String s) {
         try {
             BASE64Decoder d = new BASE64Decoder();
